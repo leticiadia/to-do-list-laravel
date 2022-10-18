@@ -10,6 +10,9 @@
 
 -   [x] Create API
 -   [ ] Create Views
+-   [ ] Create pagination to list task
+-   [ ] Create search field to list task
+-   [ ] Adjust responsive to pages
 
 ## 👩‍💻 Contributing
 
