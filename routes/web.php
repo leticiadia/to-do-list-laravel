@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/task', [TasksController::class, 'index']);
+Route::get('/task', [TasksController::class, 'index'])->name('tasks');
 
-Route::get('/create-task', function () {
-    return view('templates.form');
-});
-
-Route::post('/create-task', [TasksController::class, 'store'])->name('store');
+Route::post('/task', [TasksController::class, 'store'])->name('store');
