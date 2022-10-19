@@ -28,7 +28,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $task  = Task::create($request->all());
-        return response(['message' => $task], 201);
+        return redirect()->route('tasks', ['task' => $task]);
     }
 
     /**
