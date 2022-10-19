@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/task', [TasksController::class, 'index'])->name('tasks');
+Route::get('/', [TasksController::class, 'index'])->name('tasks');
 
 Route::post('/task', [TasksController::class, 'store'])->name('store');
