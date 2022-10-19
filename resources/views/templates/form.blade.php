@@ -6,6 +6,7 @@
         </div>
 
         <form action="{{ route('store') }}" method="post" class="form">
+            @csrf
             <div class="input-name">
                 <label for="name">Task Name:</label>
                 <input type="text" id="name" name="name" placeholder="Name" />
