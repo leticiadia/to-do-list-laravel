@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-body">
-        <x-eos-close width="24" height="24" class="modal-close" />
+        <x-eos-close width="24" height="24" onclick="Modal.close()" class="modal-close" />
         <div class="modal-header">
             <h3>Create task</h3>
         </div>
