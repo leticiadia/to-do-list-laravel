@@ -6,7 +6,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -14,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: 'Poppins', sans-serif; 
+    font-family: "Poppins", sans-serif;
     font-size: 62.5%;
     background-color: #f9fafb;
 }
@@ -36,10 +37,10 @@ main {
 .tasks-list {
     max-width: 56vw;
     min-height: 64vh;
-    
+
     margin: 32px auto;
     padding: 1.6rem;
-    
+
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
 }
@@ -47,7 +48,7 @@ main {
 .tasks-list h2 {
     font-size: 32px;
     font-weight: 500;
-    color:rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 
     padding: 8px 0;
 }
@@ -86,7 +87,7 @@ main {
 .task-label {
     width: 86px;
     height: 24px;
-    
+
     text-align: center;
     color: #fff;
     background-color: #a78bfa;
@@ -106,9 +107,10 @@ main {
     align-items: center;
 }
 
-.modal-content {
+.modal-content,
+.modal-content-edit {
     position: fixed;
-    
+
     top: 0;
     left: 0;
 
@@ -156,12 +158,13 @@ main {
 .modal-header h3 {
     font-size: 32px;
     font-weight: 500;
-    color:rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 
     padding: 8px 0;
 }
 
-.input-name, .input-label {
+.input-name,
+.input-label {
     display: flex;
     flex-direction: column;
 }
@@ -192,7 +195,8 @@ main {
     justify-content: flex-end;
 }
 
-.btn-save, .btn-cancel {
+.btn-save,
+.btn-cancel {
     padding: 24px 0;
 }
 
@@ -232,4 +236,3 @@ main {
 .btn-cancel button:hover {
     background-color: #ef4444;
 }
-
