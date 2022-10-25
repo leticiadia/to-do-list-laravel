@@ -15,8 +15,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
-        return view('templates.tasks-list', ['task' => $task]);
+        $tasks = Task::all();
+        return view('templates.tasks-list', ['tasks' => $tasks]);
     }
 
     /**
@@ -54,6 +54,11 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
+        $task = Task::find($id);
+
+        if (empty($task)) return response(['message' => 'Task not found'], 404);
+
+        return view('templates.edit', ['task' => $task]);
     }
 
     /**
@@ -71,7 +76,7 @@ class TasksController extends Controller
 
         $task->update($request->all());
 
-        return response($task, 200);
+        return redirect()->route('tasks', ['task' => $task]);
     }
 
     /**
