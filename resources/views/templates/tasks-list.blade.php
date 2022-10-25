@@ -6,27 +6,28 @@
     <h2>Tasks</h2>
 
     <div class="button-create">
-        <a href="#" class="btn-new">New Task +</a>
+        <a href="#" onclick="Modal.open()" class="btn-new">New Task +</a>
     </div>
 
     @include('templates.form')
 
     <ul>
-        @foreach ($task as $tasks)
+        @foreach($tasks as $task)
         <li>
             <div class="task-name">
-                <p> {{ $tasks->name }} </p>
+                <p> {{ $task->name }} </p>
             </div>
 
             <div class="task-label">
-                <span>{{ $tasks->label }}</span>
+                <span>{{ $task->label }}</span>
             </div>
 
             <div class="icons">
                 <div class="icon-edit">
-                    <a href="#">
+                    <a href="/task/{{ $task->id }}/edit" onclick="ModalEdit.open()">
                         <x-eos-edit width="24" height="24" style="color: #f59e0b;" />
                     </a>
+                    @include('templates.edit')
                 </div>
 
                 <div class="icon-delete">
