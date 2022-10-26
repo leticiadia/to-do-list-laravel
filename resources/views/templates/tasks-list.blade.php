@@ -24,7 +24,14 @@
 
             <div class="icons">
                 <div class="icon-edit">
-                    <a href="/task/{{ $task->id }}/edit" onclick="ModalEdit.open()">
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $task->id }}">
+                        Launch static backdrop modal
+                    </button> -->
+                    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $task->id }}">
+                        <x-eos-edit width="24" height="24" style="color: #f59e0b;" />
+                    </a> -->
+
+                    <a href="#" onclick="ModalEdit.open('<?php echo $task->name ?>', '<?php echo $task->label ?>')">
                         <x-eos-edit width="24" height="24" style="color: #f59e0b;" />
                     </a>
                     @include('templates.edit')
