@@ -1,4 +1,4 @@
-<div class="modal-content-edit">
+<div class="modal-content-edit" id="ModalEdit{{ $task->id }}">
     <div class="modal-body">
         <x-eos-close width="24" height="24" onclick="ModalEdit.close()" class="modal-close" />
         <div class="modal-header">
@@ -6,16 +6,16 @@
         </div>
 
         <form action="/task/{{ $task->id }}" method="post" class="form">
-            @csrf
             @method('PUT')
+            @csrf
             <div class="input-name">
                 <label for="name">Task Name:</label>
-                <input type="text" id="name" name="name" placeholder="Name" value="{{ $task->name }}" />
+                <input type="text" id="name" name="name" placeholder="Name" value="{{ $task->name }}" class="name-input" />
             </div>
 
             <div class="input-label">
                 <label for="label">Days of Week:</label>
-                <input type="text" id="label" name="label" placeholder="Days of Week" value="{{ $task->label }}" />
+                <input type="text" id="label" name="label" placeholder="Days of Week" value="{{ $task->label }}" class="label-input" />
             </div>
 
             <div class="buttons">
