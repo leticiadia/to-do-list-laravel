@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 62.5%;
+    background-color: #f9fafb;
+}
+
+header {
+    padding: 24px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 500;
+    color: #a78bfa;
+}
+
+main {
+    flex: 1;
+}
+
+.tasks-list {
+    max-width: 56vw;
+    min-height: 64vh;
+
+    margin: 32px auto;
+    padding: 1.6rem;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+}
+
+.tasks-list h2 {
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+
+    padding: 8px 0;
+}
+
+.button-create {
+    padding: 16px 0;
+}
+
+.btn-new {
+    text-decoration: none;
+    color: #a78bfa;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-new:hover {
+    color: #8b5cf6;
+}
+
+.tasks-list ul {
+    list-style: none;
+}
+
+.tasks-list ul li {
+    display: grid;
+    grid-template-columns: 8fr 6fr 1fr;
+
+    padding: 0.6rem 0;
+}
+
+.tasks-list ul li p {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.task-label {
+    width: 86px;
+    height: 24px;
+
+    text-align: center;
+    color: #fff;
+    background-color: #a78bfa;
+    border-radius: 4px;
+
+    padding: 3px 0;
+}
+
+.tasks-list ul li .task-label span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.modal-content,
+.modal-content-edit {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+}
+
+.modal-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 40vw;
+    min-height: 40vh;
+    padding: 32px;
+    background-color: #fff;
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    cursor: pointer;
+}
+
+.modal-header h3 {
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+
+    padding: 8px 0;
+}
+
+.input-name,
+.input-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body input {
+    border: none;
+    width: 100%;
+    height: 40px;
+
+    padding: 16px;
+    background-color: #f9fafb;
+    border-radius: 4px;
+
+    outline-color: #a78bfa;
+
+    font-size: 16px;
+}
+
+.modal-body label {
+    padding: 8px 0;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* .modal-body .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn-save,
+.btn-cancel {
+    padding: 24px 0;
+}
+
+.btn-save button {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+
+    padding: 12px 40px;
+    background-color: #4ade80;
+    border: none;
+    border-radius: 4px;
+
+    margin-right: 16px;
+
+    cursor: pointer;
+}
+
+.btn-save button:hover {
+    background-color: #22c55e;
+}
+
+.btn-cancel button {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+
+    padding: 12px 32px;
+    background-color: #f87171;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.btn-cancel button:hover {
+    background-color: #ef4444;
+} */
