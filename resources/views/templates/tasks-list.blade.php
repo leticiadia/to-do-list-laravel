@@ -6,10 +6,8 @@
     <h2>Tasks</h2>
 
     <div class="button-create">
-        <a href="#" onclick="Modal.open()" class="btn-new">New Task +</a>
+        <a href="{{ route('tasks.create') }}" class="btn-new">New Task +</a>
     </div>
-
-    @include('templates.form')
 
     <ul>
         @foreach($tasks as $task)
@@ -24,23 +22,19 @@
 
             <div class="icons">
                 <div class="icon-edit">
-                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $task->id }}">
-                        Launch static backdrop modal
-                    </button> -->
-                    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $task->id }}">
-                        <x-eos-edit width="24" height="24" style="color: #f59e0b;" />
-                    </a> -->
-
-                    <a href="#" onclick="ModalEdit.open('<?php echo $task->name ?>', '<?php echo $task->label ?>')">
+                    <a href="/task/{{ $task->id }}/edit">
                         <x-eos-edit width="24" height="24" style="color: #f59e0b;" />
                     </a>
-                    @include('templates.edit')
                 </div>
 
                 <div class="icon-delete">
-                    <a href="#">
-                        <x-eos-delete width="24" height="24" style="color: #ef4444;" />
-                    </a>
+                    <form action="/task/{{ $task->id }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit">
+                            <x-eos-delete width="24" height="24" style="color: #ef4444;" />
+                        </button>
+                    </form>
                 </div>
             </div>
         </li>
