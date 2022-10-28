@@ -19,6 +19,11 @@ class TasksController extends Controller
         return view('templates.tasks-list', ['tasks' => $tasks]);
     }
 
+    public function create()
+    {
+        return view('templates.create-task');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -27,7 +32,10 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $task  = Task::create($request->all());
+        $task  = Task::create([
+            'name' => $request->name,
+            'label' => $request->label
+        ]);
         return redirect()->route('tasks', ['task' => $task]);
     }
 
@@ -58,7 +66,7 @@ class TasksController extends Controller
 
         if (empty($task)) return response(['message' => 'Task not found'], 404);
 
-        return view('templates.edit', ['task' => $task]);
+        return view('templates.edit-task', ['task' => $task]);
     }
 
     /**
@@ -93,6 +101,6 @@ class TasksController extends Controller
 
         if (empty($task)) return response(['message' => 'Task not found', 404]);
 
-        return response(['message' => 'Task deleted successfully'], 200);
+        return redirect()->route('tasks', ['task' => $task])->with('message', 'Task deleted successfully');
     }
 }
