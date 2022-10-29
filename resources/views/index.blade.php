@@ -12,11 +12,11 @@
 </head>
 
 <body>
-    <header>
-        <h1>ToDoList</h1>
+    <header class="p-8">
+        <a href="{{ route('tasks') }}" class="font-sans font-medium text-4xl no-underline text-violet-400">ToDoList</a>
     </header>
 
-    <main>
+    <main class="flex flex-col items-center justify-center">
         @yield('content')
     </main>
 
