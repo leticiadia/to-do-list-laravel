@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Services\PaginationService;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -15,7 +16,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::paginate(4);
         return view('templates.tasks-list', ['tasks' => $tasks]);
     }
 
@@ -93,7 +94,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $task = Task::find($id);
 
