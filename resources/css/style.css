@@ -65,8 +65,6 @@ main {
 .tasks-list ul li {
     display: grid;
     grid-template-columns: 8fr 6fr 1fr;
-
-    padding: 0.6rem 0;
 }
 
 .tasks-list ul li p {
@@ -95,4 +93,9 @@ main {
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+.modal-active {
+    visibility: visible;
+    opacity: 1;
 }
