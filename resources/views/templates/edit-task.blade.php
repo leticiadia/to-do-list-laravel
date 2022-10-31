@@ -21,7 +21,8 @@
             </div>
 
             <div class="btn-cancel">
-                <button onclick="{{ route('tasks') }}" class="bg-red-400 hover:bg-red-500 text-white text-sm font-bold py-3 px-10 rounded">Cancel</button>
+                <a onclick="Modal.open()" class="bg-red-400 hover:bg-red-500 text-white text-sm font-bold py-3 px-10 rounded cursor-pointer">Cancel</a>
+                @include('templates.alert-message')
             </div>
         </div>
     </form>
