@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use App\Services\PaginationService;
 use Illuminate\Http\Request;
-use Throwable;
+use Illuminate\Support\Facades\DB;
 
 class TasksController extends Controller
 {
@@ -14,10 +13,20 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::paginate(4);
-        return view('templates.tasks-list', ['tasks' => $tasks]);
+        $tasks = Task::all();
+
+        if (isset($_GET['query'])) {
+            $search = $_GET['query'];
+            $tasks = DB::table('tasks')->where('name', 'like', '%' . $search . '%')->paginate(4);
+            $tasks->appends($request->all());
+            return view('templates.tasks-list', compact('tasks'));
+        } else {
+            $tasks = Task::paginate(4);
+            $tasks->appends($request->all());
+            return view('templates.tasks-list', compact('tasks'));
+        }
     }
 
     public function create()
@@ -103,5 +112,20 @@ class TasksController extends Controller
         if (empty($task)) return response(['message' => 'Task not found', 404]);
 
         return redirect()->route('tasks', ['task' => $task])->with('message', 'Task deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $tasks = Task::all();
+        if (isset($_GET['query'])) {
+            $search = $_GET['query'];
+            $tasks = DB::table('tasks')->where('name', 'like', '%' . $search . '%')->paginate(4);
+            $tasks->appends($request->all());
+            return view('templates.tasks-list', compact('tasks'));
+        } else {
+            $tasks = Task::paginate(4);
+            $tasks->appends($request->all());
+            return view('templates.tasks-list', compact('tasks'));
+        }
     }
 }
