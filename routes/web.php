@@ -23,3 +23,6 @@ Route::get('/task/{id}/edit', [TasksController::class, 'edit'])->name('tasks.edi
 Route::put('/task/{id}', [TasksController::class, 'update'])->name('tasks.update');
 
 Route::delete('/task/{id}', [TasksController::class, 'destroy'])->name('tasks.destroy');
+
+
+Route::get('/search', [TasksController::class, 'search'])->name('tasks.search');
