@@ -20,8 +20,8 @@
         @yield('content')
     </main>
 
-    <footer>
-        <p>&copy; Direitos reservados a Leticia Dias</p>
+    <footer class="m-auto py-6">
+        <p class="text-sm text-violet-500 font-medium">&copy; Direitos reservados a Leticia Dias</p>
     </footer>
 
     <script src="/js/script.js"></script>
