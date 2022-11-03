@@ -20,7 +20,7 @@
         @yield('content')
     </main>
 
-    <footer class="m-auto py-6">
+    <footer class="m-auto pb-2">
         <p class="text-sm text-violet-500 font-medium">&copy; Direitos reservados a Leticia Dias</p>
     </footer>
 
