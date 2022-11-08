@@ -106,19 +106,4 @@ class TasksController extends Controller
 
         return redirect()->route('tasks', ['task' => $task])->with('message', 'Task deleted successfully');
     }
-
-    public function search(Request $request)
-    {
-        $tasks = Task::all();
-        if (isset($_GET['query'])) {
-            $search = $_GET['query'];
-            $tasks = DB::table('tasks')->where('name', 'like', '%' . $search . '%')->paginate(4);
-            $tasks->appends($request->all());
-            return view('templates.tasks-list', compact('tasks'));
-        } else {
-            $tasks = Task::paginate(4);
-            $tasks->appends($request->all());
-            return view('templates.tasks-list', compact('tasks'));
-        }
-    }
 }
