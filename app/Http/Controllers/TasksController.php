@@ -8,25 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class TasksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        $tasks = Task::all();
+        $query = Task::query();
 
-        if (isset($_GET['query'])) {
-            $search = $_GET['query'];
-            $tasks = DB::table('tasks')->where('name', 'like', '%' . $search . '%')->paginate(4);
-            $tasks->appends($request->all());
-            return view('templates.tasks-list', compact('tasks'));
+        if ($request->has('query')) {
+            $search = $request->query('query');
+            $tasks = $query->where('name', 'like', '%' . $search . '%')->paginate(4)->appends(['query' => $request->query('query')]);
         } else {
-            $tasks = Task::paginate(4);
-            $tasks->appends($request->all());
-            return view('templates.tasks-list', compact('tasks'));
+            $tasks = $query->paginate(4)->appends(['query' => $request->get('query')]);
         }
+
+        return view('templates.tasks-list', compact('tasks'));
     }
 
     public function create()
