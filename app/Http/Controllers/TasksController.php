@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class TasksController extends Controller
 {
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $query = Task::query();
@@ -22,6 +26,10 @@ class TasksController extends Controller
         return view('templates.tasks-list', compact('tasks'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('templates.create-task');
@@ -39,19 +47,18 @@ class TasksController extends Controller
             'name' => $request->name,
             'label' => $request->label
         ]);
-        return redirect()->route('tasks', ['task' => $task]);
+
+        return redirect()->route('tasks', $task);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        $task = Task::find($id);
-
         if (empty($task)) return response(['message' => 'Task not found', 404]);
 
         return response($task, 200);
@@ -60,50 +67,45 @@ class TasksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        $task = Task::find($id);
-
         if (empty($task)) return response(['message' => 'Task not found'], 404);
 
-        return view('templates.edit-task', ['task' => $task]);
+        return view('templates.edit-task', $task);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        $task = Task::find($id);
-
         if (empty($task)) return response(['message' => 'Task not found'], 404);
 
         $task->update($request->all());
 
-        return redirect()->route('tasks', ['task' => $task]);
+        return redirect()->route('tasks', $task);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(Task $task)
     {
-        $task = Task::find($id);
-
-        Task::destroy($id);
-
         if (empty($task)) return response(['message' => 'Task not found', 404]);
 
-        return redirect()->route('tasks', ['task' => $task])->with('message', 'Task deleted successfully');
+        $task->delete();
+
+        return redirect()->route('tasks', $task)
+            ->with('message', 'Task deleted successfully');
     }
 }
