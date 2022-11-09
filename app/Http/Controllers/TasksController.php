@@ -74,7 +74,7 @@ class TasksController extends Controller
     {
         if (empty($task)) return response(['message' => 'Task not found'], 404);
 
-        return view('templates.edit-task', $task);
+        return view('templates.edit-task', compact('task'));
     }
 
     /**
