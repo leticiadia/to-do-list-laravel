@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="form bg-white shadow-md h-2/3 w-2/4 p-20 flex flex-col justify-center items-center rounded mx-auto">
-    <form action="{{ route('store') }}" method="post" class="w-full mx-auto flex flex-col justify-center">
+    <form action="{{ route('tasks.store') }}" method="post" class="w-full mx-auto flex flex-col justify-center">
         @csrf
         <div class="input-name">
             <label for="name" class="block uppercase tracking-wide text-violet-400 text-base font-semibold font-sans mb-2">Task Name:</label>
